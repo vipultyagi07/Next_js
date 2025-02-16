@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import { GeistSans, GeistMono } from 'geist/font';
+import Link from 'next/link';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -14,8 +14,63 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html lang="en">
+      <body className="antialiased flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
     </html>
+  );
+}
+
+function Header() {
+  return (
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        <h1 className="text-2xl font-bold">
+          <Link href="/">MySite</Link>
+        </h1>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-6">
+          <Link href="/" className="hover:underline">
+            Home
+          </Link>
+          <Link href="/about" className="hover:underline">
+            About
+          </Link>
+          <Link href="/services" className="hover:underline">
+            Services
+          </Link>
+          <Link href="/contact" className="hover:underline">
+            Contact
+          </Link>
+        </nav>
+        {/* Mobile Menu Button (static icon; add interactivity if needed) */}
+        <div className="md:hidden">
+          <button className="focus:outline-none">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-gray-800 text-white py-4 mt-auto">
+      <div className="container mx-auto text-center px-4">
+        <p>&copy; {new Date().getFullYear()} My Website. All rights reserved.</p>
+      </div>
+    </footer>
   );
 }
