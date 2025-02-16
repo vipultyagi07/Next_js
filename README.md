@@ -88,3 +88,8 @@ cd vip-nextjs
 ```bash
  npm run dev
 ```
+
+## download fonts packages 
+```bash
+npm install geist
+```
