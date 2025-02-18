@@ -20,7 +20,8 @@ function About() {
     {/* Content Section */}
     <section className="py-16 bg-white dark:bg-gray-800">
     <div className="mt-12 text-center">
-        <Link href={"/login"} >login </Link>
+        <Link href={"/login"} className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:from-blue-700 hover:to-purple-700 transition">
+        login </Link>
 
         </div>
       <div className="container mx-auto px-4">
