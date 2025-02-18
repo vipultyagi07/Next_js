@@ -14,10 +14,10 @@ function Home() {
             Empowering your business with cutting-edge solutions.
           </p>
           <Link
-            href="/signup"
+            href="/login"
             className="inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-full shadow-lg hover:bg-gray-100 transition"
           >
-            Get Started
+            Login
           </Link>
         </div>
       </section>
