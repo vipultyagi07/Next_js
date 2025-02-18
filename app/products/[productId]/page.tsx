@@ -1,8 +1,17 @@
+"use client"
 import React from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-async function ProductDetail({ params }: { params: { productId: string } }) {
+function ProductDetail({ params }: { params: { productId: string } }) {
   const { productId } = params;
+  
+  const router = useRouter();
+
+  const handleClick = () => {
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-6">
@@ -14,12 +23,12 @@ async function ProductDetail({ params }: { params: { productId: string } }) {
           This is the detailed page for Product {productId}. More information about this product will be available here.
         </p>
         <div className="mt-6">
-          <Link
-            href={`/checkout/${productId}`}
+          <button
             className="inline-block w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:from-blue-700 hover:to-purple-700 transition-all"
+            onClick={handleClick}
           >
             Buy Now
-          </Link>
+          </button>
         </div>
       </div>
     </div>
