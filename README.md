@@ -93,3 +93,8 @@ cd vip-nextjs
 ```bash
 npm install geist
 ```
+
+## download Loading motion package
+```bash
+npm install framer-motion
+```
