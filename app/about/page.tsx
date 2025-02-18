@@ -1,4 +1,5 @@
 import React from 'react'
+// add below line for using <Link>
 import Link from 'next/link';
 
 function About() {
@@ -18,11 +19,15 @@ function About() {
 
     {/* Content Section */}
     <section className="py-16 bg-white dark:bg-gray-800">
+    <div className="mt-12 text-center">
+        <Link href={"/login"} >login </Link>
+
+        </div>
       <div className="container mx-auto px-4">
         {/* Introduction */}
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
-            Who We Are
+            <br></br>Who We Are
           </h2>
           <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             We are a passionate team dedicated to delivering innovative solutions that empower businesses and drive success. Our journey began with a vision to transform industries through cutting-edge technology and exceptional service.
