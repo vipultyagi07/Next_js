@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
 function DashboardFun() {
   return (
-    <>
-     <div> Dashboard </div>
-    </>
-   
-
-  )
+    <div className="p-4">
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+        Welcome to the Dashboard
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300">
+        Here you can view your stats, notifications, and more.
+      </p>
+    </div>
+  );
 }
 
-export default DashboardFun
+export default DashboardFun;
