@@ -4,8 +4,10 @@ import Link from "next/link";
 
 export default function Error({
   error,
+  reset,
 }: {
   error: Error;
+  reset: () => void;
 }) {
   // Log the error to the console for debugging
   console.error("Error caught in Error Boundary:", error);
@@ -23,7 +25,12 @@ export default function Error({
           Something went wrong. We are working on it.
         </p>
         <div className="flex flex-col sm:flex-row sm:justify-center gap-4">
-
+          <button
+            onClick={() => reset()}
+            className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Try again
+          </button>
           <Link
             href="/"
             className="px-6 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition"
