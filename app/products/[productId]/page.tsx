@@ -4,6 +4,10 @@ import { useRouter } from "next/navigation";
 
 function ProductDetail({ params }: { params: { productId: string } }) {
   const { productId } = params;
+
+  if(parseInt(productId)>30){
+    throw new Error("Error while searching the product")
+  }
   
   const router = useRouter();
 
