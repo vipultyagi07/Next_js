@@ -84,9 +84,17 @@ cd vip-nextjs
 ```
 
 
-## Run the Project
+## Run the Project in Development mode
 ```bash
  npm run dev
+```
+
+## Run the Project in Production mode
+```bash
+ npm run buld
+```
+```bash
+ npm run start
 ```
 
 ## download fonts packages 
