@@ -5,15 +5,19 @@ interface DashBoardLayoutProps {
   users: React.ReactNode;
   notification: React.ReactNode;
   revenue: React.ReactNode;
+  login: React.ReactNode;
 }
+// manually change it to mimic the real login auth api 
+ const isLoggedIn=true;
 
 const DashBoardLayout: React.FC<DashBoardLayoutProps> = ({
   children,
   users,
   notification,
   revenue,
+  login
 }) => {
-  return (
+  return isLoggedIn ?(
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
       {/* Top Header */}
       <header className="bg-white dark:bg-gray-800 shadow p-4">
@@ -43,7 +47,10 @@ const DashBoardLayout: React.FC<DashBoardLayoutProps> = ({
         </p>
       </footer>
     </div>
-  );
+  ) : (
+    <div> {login}</div>
+
+  )
 };
 
 export default DashBoardLayout;
