@@ -1,11 +1,14 @@
 "use client"
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";  
 
-function ProductDetail({ params }: { params: { productId: string } }) {
-  const { productId } = params;
+function ProductDetail() {
+  const { productId } = useParams();
 
-  if(parseInt(productId)>30){
+  const id = parseInt(productId as string); // ✅ Fix TypeScript error  
+
+  if(id>30){
     throw new Error("Error while searching the product")
   }
   

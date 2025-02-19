@@ -16,8 +16,11 @@ export default function Error({
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-purple-600 to-blue-600 p-4">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 max-w-md text-center">
         <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white mb-4">
-          Oops!
+          Oops! 
         </h1>
+        <div className="text-red-500 text-lg font-semibold mb-4">
+          {error.message}
+        </div>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
           Something went wrong. We are working on it.
         </p>
