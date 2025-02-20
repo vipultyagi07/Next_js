@@ -106,3 +106,6 @@ npm install geist
 ```bash
 npm install framer-motion
 ```
+
+
+npm install -g prettier
