@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
+    // if (req.nextUrl.pathname === "/forgot-password") {
+    //     return NextResponse.redirect(new URL("/login", req.url));
+    // }
     if (req.nextUrl.pathname === "/forgot-password") {
-        return NextResponse.redirect(new URL("/login", req.url));
+        return NextResponse.rewrite(new URL("/login", req.url));
     }
 
     return NextResponse.next(); // Allow the request to proceed for other routes
