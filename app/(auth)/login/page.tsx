@@ -1,14 +1,49 @@
-import React from 'react'
-import Link from 'next/link';
+"use client";
 
-function login() {
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      console.log("Response status:", response.status);
+
+      if (response.ok) {
+        console.log("Login successful, redirecting...");
+        router.push("/dashboard");
+      } else {
+        const data = await response.json();
+        console.error("Login failed:", data);
+        setError(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      setError("An unexpected error occurred.");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
       <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 space-y-6 transform transition-all duration-300 hover:scale-105">
         <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
           Welcome Back
         </h2>
-        <form className="space-y-5">
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -21,6 +56,8 @@ function login() {
               id="email"
               placeholder="you@example.com"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition duration-200"
             />
           </div>
@@ -36,26 +73,10 @@ function login() {
               id="password"
               placeholder="********"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition duration-200"
             />
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember_me"
-                name="remember_me"
-                type="checkbox"
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <label htmlFor="remember_me" className="ml-2 text-sm text-gray-900 dark:text-gray-300">
-                Remember me
-              </label>
-            </div>
-            <div className="text-sm">
-              <Link href="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
-                Forgot password?
-              </Link>
-            </div>
           </div>
           <button
             type="submit"
@@ -64,15 +85,7 @@ function login() {
             Sign In
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-          Don&apos;t have an account?{' '}
-          <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
-            Sign up
-          </Link>
-        </p>
       </div>
     </div>
-  )
+  );
 }
-
-export default login

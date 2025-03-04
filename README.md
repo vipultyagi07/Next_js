@@ -109,3 +109,19 @@ npm install framer-motion
 
 
 npm install -g prettier
+
+## install it for auth implmentation
+```bash
+npm install js-cookie
+
+npm i --save-dev @types/js-cookie
+
+npm install cookie
+
+npm install --save-dev @types/cookie
+
+npm install jsonwebtoken
+
+npm install --save-dev @types/jsonwebtoken
+
+```
